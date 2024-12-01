@@ -3,23 +3,29 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Produto } from '../models/produtos';
+import { API_CONFIG } from '../config/api.config';
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoService {
-  private apiUrl = 'http://localhost:8080/api/produtos'; // Ajuste conforme necessário
+  constructor(private http: HttpClient) {} // Ajuste conforme necessário
 
-  constructor(private http: HttpClient) {}
+  findall(): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${API_CONFIG.baseURL}/api/produtos`);
+  }
 
   getProdutos(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.apiUrl);
+    return this.http.get<Produto[]>('${API_CONFIG.baseURL}/api/produtos');
   }
 
   addProduto(produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(this.apiUrl, produto);
+    return this.http.post<Produto>(
+      `${API_CONFIG.baseURL}/api/produtos`,
+      produto
+    );
   }
 
   deleteProduto(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${API_CONFIG.baseURL}/api/produtos/${id}`);
   }
 }

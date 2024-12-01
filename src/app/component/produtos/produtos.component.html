@@ -1,19 +1,19 @@
-<h2>Lista de Produtos</h2>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>MAC</th>
-      <th>Quantidade</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let produto of produtos">
-      <td>{{ produto.id }}</td>
-      <td>{{ produto.nome }}</td>
-      <td>{{ produto.mac }}</td>
-      <td>{{ produto.quantidade }}</td>
-    </tr>
-  </tbody>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="demo-position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="demo-name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="demo-weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+  </ng-container>
 </table>
