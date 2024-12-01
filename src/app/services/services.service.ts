@@ -11,11 +11,11 @@ export class ProdutoService {
   constructor(private http: HttpClient) {} // Ajuste conforme necessário
 
   findall(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(`${API_CONFIG.baseURL}/api/produtos`);
+    return this.http.get<Produto[]>(`${API_CONFIG.baseURL}/produtos`);
   }
 
   getProdutos(): Observable<Produto[]> {
-    return this.http.get<Produto[]>('${API_CONFIG.baseURL}/api/produtos');
+    return this.http.get<Produto[]>('${API_CONFIG.baseURL}/produtos');
   }
 
   addProduto(produto: Produto): Observable<Produto> {
@@ -26,6 +26,6 @@ export class ProdutoService {
   }
 
   deleteProduto(id: number): Observable<void> {
-    return this.http.delete<void>(`${API_CONFIG.baseURL}/api/produtos/${id}`);
+    return this.http.delete<void>(`${API_CONFIG.baseURL}/produtos/${id}`);
   }
 }
